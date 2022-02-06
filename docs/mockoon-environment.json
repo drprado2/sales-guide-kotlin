@@ -1,0 +1,92 @@
+{
+  "uuid": "30f16d45-832e-4b60-be3c-b75cb12df51a",
+  "lastMigration": 19,
+  "name": "Mockoon environment",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 5051,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f98fe6d6-f69b-4a77-9625-241050835529",
+      "documentation": "Get company data",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "d00bfc94-9025-4372-90bd-c92a68a3b27b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "81baa737-e2c9-42fa-ae80-2ecccadac6f9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "ce4e732f-cd4d-4a4f-9276-dfc627bc15d8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
