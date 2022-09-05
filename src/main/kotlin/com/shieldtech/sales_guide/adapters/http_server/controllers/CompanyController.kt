@@ -4,7 +4,7 @@ import com.shieldtech.sales_guide.adapters.http_server.middlewares.AddContentTyp
 import com.shieldtech.sales_guide.adapters.http_server.middlewares.AuthMiddleware
 import com.shieldtech.sales_guide.adapters.http_server.transformers.CompanyTransformer
 import com.shieldtech.sales_guide.adapters.http_server.transformers.InvalidCommandTransformer.toJson
-import com.shieldtech.sales_guide.adapters.http_server.utils.endSpan
+import com.shieldtech.sales_guide.adapters.http_server.utils.endRouterSpan
 import com.shieldtech.sales_guide.adapters.http_server.utils.setErrorToSpan
 import com.shieldtech.sales_guide.configs.Envs
 import com.shieldtech.sales_guide.domain.commands.GetCompanyByIdCommand
@@ -41,7 +41,7 @@ class CompanyController(vertx: Vertx, private val getCompanyById: GetCompanyById
 
   fun configureRoutes(): CompanyController {
     router
-      .route(HttpMethod.GET, "/current/:uuid")
+      .route(HttpMethod.GET, "/current")
       .produces(APP_JSON)
       .handler(AddContentType())
       .handler(TimeoutHandler.create(Envs.getRequestMaxTimeout()))
@@ -74,10 +74,9 @@ class CompanyController(vertx: Vertx, private val getCompanyById: GetCompanyById
         ctx.setErrorToSpan(it)
         handleError(it, ctx, cmd)
       }
-      .doAfterTerminate {
-        ctx.endSpan()
+      .subscribe {
+        ctx.endRouterSpan()
       }
-      .subscribe()
   }
 
   private fun handleError(error: Throwable, ctx: RoutingContext, cmd: GetCompanyByIdCommand): Completable {

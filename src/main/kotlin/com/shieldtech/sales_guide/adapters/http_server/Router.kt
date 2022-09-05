@@ -3,6 +3,7 @@ package com.shieldtech.sales_guide.adapters.http_server
 import com.shieldtech.sales_guide.adapters.http_server.controllers.CompanyController
 import com.shieldtech.sales_guide.adapters.http_server.middlewares.*
 import com.shieldtech.sales_guide.utils.Constants
+import io.opentelemetry.api.OpenTelemetry
 import io.opentelemetry.api.trace.Tracer
 import io.vertx.core.http.HttpMethod
 import io.vertx.rxjava3.ext.web.handler.CorsHandler

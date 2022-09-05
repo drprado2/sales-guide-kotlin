@@ -1,0 +1,21 @@
+<!-- logback.xml -->
+<configuration>
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+  <appender name="JsonAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <version>${SYSTEM_VERSION}</version>
+      <writeVersionAsInteger>true</writeVersionAsInteger>
+      <timestampPattern>yyyy-MM-dd HH:mm:ss.SSS</timestampPattern>
+    </encoder>
+  </appender>
+  <appender name="TextAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>
+        %highlight([%level]) %d{HH:mm:ss.SSS} [%t] %logger{26}.%M:%L - %msg%n
+      </Pattern>
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="TextAppender"/>
+  </root>
+</configuration>

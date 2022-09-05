@@ -3,20 +3,250 @@
   "lastMigration": 19,
   "name": "Mockoon environment",
   "endpointPrefix": "",
-  "latency": 0,
+  "latency": 100,
   "port": 5051,
   "hostname": "0.0.0.0",
   "routes": [
     {
       "uuid": "f98fe6d6-f69b-4a77-9625-241050835529",
-      "documentation": "Get company data",
+      "documentation": "Get user data",
       "method": "get",
-      "endpoint": "",
+      "endpoint": "api/users/:id",
       "responses": [
         {
           "uuid": "d00bfc94-9025-4372-90bd-c92a68a3b27b",
           "body": "{}",
           "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "796c6a42-6345-4a4d-a679-0a3445782245",
+          "body": "{\n  \"id\": \"25\",\n  \"name\": \"Adriano Oliveira\",\n  \"cep\": \"87083480\"\n}",
+          "latency": 600,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "25",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "81baa737-e2c9-42fa-ae80-2ecccadac6f9",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/ceps/v1/:cep",
+      "responses": [
+        {
+          "uuid": "ce4e732f-cd4d-4a4f-9276-dfc627bc15d8",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "b74d8265-e7d1-4580-8760-bbb614e8967e",
+          "body": "{}",
+          "latency": 200,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "cep",
+              "value": "87083480",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "3a0ac532-e4bb-4105-8987-c720762dd415",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/ceps/v2/:cep",
+      "responses": [
+        {
+          "uuid": "d5cf77e4-282a-407d-9c14-3b16d2baef8c",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "d82a3ee2-65a0-4d9a-bd08-fc52b6cdf800",
+          "body": "{\n  \"adress\": \"Rua pioneiro antonio correa britto, 158\"\n}",
+          "latency": 800,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "cep",
+              "value": "87083480",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "abe4836f-04ad-4b65-9901-ae34160c71bb",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/ceps/v3/:cep",
+      "responses": [
+        {
+          "uuid": "5e183a52-d0ca-4270-96a1-7bb420b91113",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "c49d321b-70da-45d3-b7b4-180ab6499241",
+          "body": "{\n  \"adress\": \"Rua pioneiro antonio correa britto, 158\"\n}",
+          "latency": 1200,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "cep",
+              "value": "87083480",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "87dbc7aa-3bd3-4dbe-a710-d6eb5bdac084",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/users/:id/purchases",
+      "responses": [
+        {
+          "uuid": "670c7e37-0eab-4537-96b4-285a69f53595",
+          "body": "{}",
+          "latency": 600,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "4d92e83b-1e4e-407f-93dc-b09f3dbb7707",
+          "body": "{\n  \"data\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"id\": \"{{ faker 'random.uuid' }}\",\n        \"merchant_name\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n        \"merchant_email\": \"{{faker 'internet.email'}}\",\n        \"merchant_document\": \"{{ oneOf (array '838.451.970-64' '623.518.680-05' '995.218.480-81' '79.496.967/0001-66' '69.212.718/0001-48') }}\",\n        \"date\": {{faker 'time.recent'}}\n      },\n    {{/ repeat }}\n  ],\n  \"total\": 56\n}",
+          "latency": 1600,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "id",
+              "value": "25",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "629a4f69-1b4e-4dce-80f8-a1b7478ca15b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/users/health",
+      "responses": [
+        {
+          "uuid": "b93b4201-1b71-4211-b4ad-f4694baf68f3",
+          "body": "{\n  \"health\": true\n}",
+          "latency": 300,
           "statusCode": 200,
           "label": "",
           "headers": [],
@@ -33,15 +263,15 @@
       "sequentialResponse": false
     },
     {
-      "uuid": "81baa737-e2c9-42fa-ae80-2ecccadac6f9",
+      "uuid": "8512270d-4b61-4a03-8cd4-5ce2266d1393",
       "documentation": "",
       "method": "get",
-      "endpoint": "",
+      "endpoint": "api/ceps/health",
       "responses": [
         {
-          "uuid": "ce4e732f-cd4d-4a4f-9276-dfc627bc15d8",
-          "body": "{}",
-          "latency": 0,
+          "uuid": "02c0f6eb-6dc3-4f27-ae1a-2898ea8eb093",
+          "body": "{\n  \"health\": true\n}",
+          "latency": 300,
           "statusCode": 200,
           "label": "",
           "headers": [],

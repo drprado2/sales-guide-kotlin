@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim
+    container_name: zipkin
+    environment:
+      - STORAGE_TYPE=mem
+      - MYSQL_HOST=mysql
+    ports:
+      - 9411:9411
+
+  teste-postgres-compose:
+    image: postgis/postgis
+    hostname: "postgres-sales-guide"
+    container_name: postgres-sales-guide
+    environment:
+      POSTGRES_PASSWORD: "Postgres2019!"
+      POSTGRES_USER: "admin"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres-compose-network
+
+  teste-pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "renatogroff@yahoo.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "16543:80"
+    depends_on:
+      - teste-postgres-compose
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network:
+    driver: bridge
+  sales-guide-network:
+    ipam:
+      driver: default
+  jaeger-example:
+
+volumes:
+  postgres-data:
+    driver: local

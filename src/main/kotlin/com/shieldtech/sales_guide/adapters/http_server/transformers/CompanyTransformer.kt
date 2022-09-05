@@ -8,6 +8,7 @@ import com.shieldtech.sales_guide.utils.Constants
 import com.shieldtech.sales_guide.utils.Constants.CID_CTX_KEY
 import com.shieldtech.sales_guide.utils.Constants.USER_CTX_KEY
 import io.opentelemetry.api.trace.Span
+import io.opentelemetry.api.trace.Tracer
 import io.vertx.core.json.JsonObject
 import io.vertx.rxjava3.ext.web.RoutingContext
 import java.time.format.DateTimeFormatter

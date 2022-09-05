@@ -22,10 +22,8 @@ class GetCompanyById(private val companyRepository: CompanyRepository, private v
     var span: Span? = null
 
     return Maybe.just(cmd)
-      .doOnEvent { _, _ ->
-        span = tracer.spanBuilder(SPAN_NAME).setParent(Context.current().with(cmd.parentSpan)).startSpan()
-      }
       .map {
+        span = tracer.spanBuilder(SPAN_NAME).setParent(Context.current().with(cmd.parentSpan)).startSpan()
         it.copy(parentSpan = span)
       }
       .doOnSuccess { it.validate() }
@@ -43,6 +41,6 @@ class GetCompanyById(private val companyRepository: CompanyRepository, private v
       .doOnError {
         span?.setError(it)
       }
-      .doAfterTerminate { span?.end() }
+      .doOnTerminate { span?.end() }
   }
 }

@@ -4,6 +4,7 @@ import am.ik.yavi.builder.ValidatorBuilder
 import com.shieldtech.sales_guide.domain.entities.Company
 import com.shieldtech.sales_guide.domain.errors.InvalidCommandException
 import io.opentelemetry.api.trace.Span
+import io.opentelemetry.api.trace.Tracer
 
 data class GetCompanyByIdCommand(val id: String, val cid: String, val parentSpan: Span?, val company: Company?=null) {
   companion object {

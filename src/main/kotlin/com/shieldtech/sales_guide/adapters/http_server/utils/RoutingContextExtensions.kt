@@ -25,7 +25,7 @@ fun RoutingContext.setErrorToSpan(err: Throwable) {
     .recordException(err)
 }
 
-fun RoutingContext.endSpan() {
+fun RoutingContext.endRouterSpan() {
   this.get<Span>(Constants.SPAN_CTX_KEY)
     .setAttribute("path", this.request().path())
     .setAttribute("method", this.request().method().toString())
